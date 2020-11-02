@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fee: 1
+  billing: 
+  user: one
+  service: one
+
+two:
+  fee: 1
+  billing: 
+  user: two
+  service: two
