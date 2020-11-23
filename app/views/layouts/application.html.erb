@@ -10,6 +10,18 @@
   </head>
 
   <body>
+
+    <div>
+      <% if logged_in?%>
+      <%= link_to "Add Subscription", new_subscription_path %>
+      <%= link_to "Current Subscriptions", subscriptions_path %>
+      <%= link_to "Logout", logout_path, method:'delete' %>
+
+      <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Logout", login_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

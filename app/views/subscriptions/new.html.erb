@@ -1,0 +1,13 @@
+<h1>Add Subscription</h1>
+
+<%= form_for(@subscription) do |f| %>
+
+  <%= f.label "Monthly Fee" %>
+  <%= f.number_field :fee %>
+
+  <%= f.label :billing %>
+  <%= f.date_field :billing%>
+
+  <%= f.submit "Create" %>
+
+<% end %>

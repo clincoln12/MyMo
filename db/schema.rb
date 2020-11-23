@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_192744) do
+ActiveRecord::Schema.define(version: 2020_11_23_171644) do
 
-  create_table "services", force: :cascade do |t|
-    t.string "name"
+  create_table "payments", force: :cascade do |t|
+    t.datetime "billing"
+    t.string "status"
+    t.integer "subscription_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["subscription_id"], name: "index_payments_on_subscription_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer "fee"
     t.datetime "billing"
     t.integer "user_id"
-    t.integer "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["service_id"], name: "index_subscriptions_on_service_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
@@ -37,6 +38,6 @@ ActiveRecord::Schema.define(version: 2020_11_02_192744) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "subscriptions", "services"
+  add_foreign_key "payments", "subscriptions"
   add_foreign_key "subscriptions", "users"
 end

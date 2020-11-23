@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  billing: 2020-11-23 12:16:44
+  status: MyString
+  subscription: one
+
+two:
+  billing: 2020-11-23 12:16:44
+  status: MyString
+  subscription: two
