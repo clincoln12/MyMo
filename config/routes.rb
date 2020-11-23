@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :payments
   root 'sessions#home'
 
   get '/signup' => 'users#new'
@@ -11,7 +10,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :subscriptions
-  resources :services
+  resources :payments
+  resources :credit_cards
   resources :users do
     resources :subscriptions, only: [:new, :create, :index]
   end

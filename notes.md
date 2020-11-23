@@ -12,13 +12,15 @@ User Story:
 
 *MODELS*
 
-- User: has many subscriptions, has many payments through subscriptions
-  [rails g resource User username email password_digest]
-- Payments: belongs to subscription, belongs to user
-  [rails g resource Payment billing:datetime, status:string subscription:references user:references]
-- Subscription: belongs to user, has many payments
-  [rails g resource Subscription name:string fee:integer billing:datetime user:references]
+- User: has many credit cards, has many subscriptions, has many payments through subscriptions
+- Credit card: belongs to user, has many payments, has many subscriptions through payments
+- Subscription: belongs to user, has many payments, has many credit cards through payments
+- Payments: belongs to subscription, belongs to credit card
 
+[rails g resource CreditCard company digits:integer user:references]
+[rails g resource Payment billing:datetime, status:string subscription:references user:references]
+[rails g resource User username email password_digest]
+[rails g resource Subscription name:string fee:integer billing:datetime user:references]
 
 *SCHEMA*
 
@@ -28,11 +30,11 @@ User Story:
 
 Checklist
 
-x Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
-x Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-- Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
-- Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
-- The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+X Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+X Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+X Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+X Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
+X The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 
 Resources:
 

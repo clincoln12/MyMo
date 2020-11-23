@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_171644) do
+ActiveRecord::Schema.define(version: 2020_11_23_234350) do
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "company"
+    t.integer "digits"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
 
   create_table "payments", force: :cascade do |t|
     t.datetime "billing"
@@ -38,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_171644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "payments", "subscriptions"
   add_foreign_key "subscriptions", "users"
 end
