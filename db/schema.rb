@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_234350) do
+ActiveRecord::Schema.define(version: 2020_11_24_140918) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string "company"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_234350) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
+    t.string "name"
     t.integer "fee"
     t.datetime "billing"
     t.integer "user_id"

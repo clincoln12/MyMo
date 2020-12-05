@@ -15,6 +15,8 @@
       <% if logged_in?%>
       <%= link_to "Add Subscription", new_subscription_path %>
       <%= link_to "Current Subscriptions", subscriptions_path %>
+      <%= link_to "Add Credit Card", new_credit_card_path %>
+      <%= link_to "Your Credit Cards", credit_cards_path %>
       <%= link_to "Logout", logout_path, method:'delete' %>
 
       <% else %>

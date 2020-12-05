@@ -1,0 +1,5 @@
+<h1><%= @credit_card.company %> - <%= @credit_card.digits %></h1>
+
+<%= link_to "Edit", edit_credit_card_path %>
+<%= link_to "Delete", credit_card_path(@credit_card), :confirm => "Are you sure?", :method => :delete %>
+

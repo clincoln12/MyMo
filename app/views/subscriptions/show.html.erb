@@ -1,0 +1,5 @@
+<h1><%= @subscription.name %> - $<%= @subscription.fee %>/mo</h1>
+<h2><%= @subscription.billing %></h2>
+
+<%= link_to "Edit", edit_subscription_path %>
+<%= link_to "Delete", subscription_path(@subscription), :confirm => "Are you sure?", :method => :delete %>

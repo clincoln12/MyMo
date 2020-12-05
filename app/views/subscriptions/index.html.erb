@@ -1,5 +1,7 @@
+<h1>$<%= total_payment %>/mo</h1>
+
 <h1>Your Subscriptions</h1>
 
 <% @subscription.each do |s| %>
-  <li><%= s.fee %></li>
+  <li><%= link_to s.name, subscription_path(s) %> - $<%= s.fee %>/mo [Subscription created on <%= s.billing.strftime('%Y-%m-%d') %>]</li>
 <% end %>
