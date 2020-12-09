@@ -3,10 +3,10 @@
 <%= form_for(@credit_card) do |f| %>
 
   <%= f.label "Credit Company" %>
-  <%= f.text_field :company %>
+  <%= f.text_field :company, {:placeholder => "Credit Company...", :required => true} %>
 
   <%= f.label "Last 4 Digits" %>
-  <%= f.number_field :digits %>
+  <%= f.number_field :digits, {placeholder: "Last 4 Digits...", required: true} %>
 
   <%= f.submit "Create" %>
 

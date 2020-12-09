@@ -9,7 +9,7 @@
   <%= f.number_field :fee %>
 
   <%= f.label :billing %>
-  <%= f.date_field :billing%>
+  <%= f.date_field :billing, value: Time.now.strftime('%Y-%m-%d')%>
 
   <%= f.submit "Create" %>
 

@@ -9,12 +9,11 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
-  resources :subscriptions
-  resources :payments
-  resources :credit_cards
-  resources :users do
-    resources :subscriptions, only: [:new, :create, :index]
+  resources :subscriptions do
+    resources :payments
   end
+  resources :credit_cards
+  resources :users
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

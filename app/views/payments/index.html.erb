@@ -1,0 +1,5 @@
+<h1>Your <%= @subscription.name %> Payments</h1>
+
+<% @payments.each do |p| %>
+  <li><%= link_to p.billing.strftime('%m-%d-%Y'), subscription_payment_path(params[:subscription_id], p) %> - <%= p.status %></li>
+<% end %>

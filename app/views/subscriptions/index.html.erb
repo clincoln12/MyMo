@@ -3,5 +3,5 @@
 <h1>Your Subscriptions</h1>
 
 <% @subscription.each do |s| %>
-  <li><%= link_to s.name, subscription_path(s) %> - $<%= s.fee %>/mo [Subscription created on <%= s.billing.strftime('%Y-%m-%d') %>]</li>
+  <li><%= link_to s.name, subscription_path(s) %> - $<%= s.fee %>/mo [Subscription created on <%= s.billing.strftime('%m-%d-%Y') %>]</li>
 <% end %>

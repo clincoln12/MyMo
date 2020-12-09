@@ -1,0 +1,6 @@
+<h1><%= @payment.billing.strftime('%m-%d-%Y') %> - <%= @payment.status %></h1>
+
+<%= link_to "Edit", edit_subscription_payment_path(params[:subscription_id], @payment) %>
+<%= link_to "Delete", subscription_payment_path(params[:subscription_id], @payment), :confirm => "Are you sure?", :method => :delete %>
+<%= link_to "See other payments for subscription", subscription_payments_path(params[:subscription_id])%>
+<%= link_to 'Go back to subscription', subscription_path(params[:subscription_id])%>

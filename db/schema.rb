@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_140918) do
+ActiveRecord::Schema.define(version: 2020_12_07_201458) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string "company"
@@ -27,16 +27,17 @@ ActiveRecord::Schema.define(version: 2020_11_24_140918) do
     t.integer "subscription_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "credit_card_id"
     t.index ["subscription_id"], name: "index_payments_on_subscription_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.string "name"
     t.integer "fee"
     t.datetime "billing"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
