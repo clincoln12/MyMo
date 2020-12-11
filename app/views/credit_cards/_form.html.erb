@@ -1,0 +1,10 @@
+<%= form_for(@credit_card) do |f| %>
+
+  <%= f.label "Credit Company" %>
+  <%= f.text_field :company, placeholder: "Credit Company...", :required => true, class: "form-control" %>
+
+  <%= f.label "Last 4 Digits" %>
+  <%= f.number_field :digits, placeholder: "Last 4 Digits...", required: true, class: "form-control" %>
+  <br>
+    <%= f.submit button_text, class: "btn btn-primary" %>
+<% end %>

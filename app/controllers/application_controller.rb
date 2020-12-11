@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   #gives access to methods in the views
-  helper_method :current_user, :logged_in?, :total_payment
+  helper_method :current_user, :logged_in?, :monthly_payment, :annual_payment
 
   private
 
@@ -17,8 +17,12 @@ class ApplicationController < ActionController::Base
     redirect_to '/' if !logged_in?
   end
 
-  def total_payment
+  def monthly_payment
     s = current_user.subscriptions
     s.sum(:fee)
+  end
+
+  def annual_payment
+    monthly_payment * 12
   end
 end

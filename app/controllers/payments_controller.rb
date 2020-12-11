@@ -10,6 +10,11 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def edit
+    @subscription = Subscription.find(params[:subscription_id])
+    @payment = Payment.find(params[:id])
+  end
+
   def create
     @payment = Payment.new(payment_params)
     @payment.subscription_id = params[:subscription_id]
@@ -23,15 +28,11 @@ class PaymentsController < ApplicationController
 
   def index
     @subscription = Subscription.find(params[:subscription_id])
-    @payments = current_user.payments
+    @payments = current_user.payments.where(subscription_id: @subscription.id)
   end
 
   def show
     @payment = Payment.find_by(id: params[:id])
-  end
-
-  def edit
-    @payment = Payment.find(params[:id])
   end
 
   def update

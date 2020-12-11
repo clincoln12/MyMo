@@ -1,7 +1,28 @@
-<h1>$<%= total_payment %>/mo</h1>
+<div class="center">
+  <h1>Your Subscriptions</h1>
+</div>
 
-<h1>Your Subscriptions</h1>
+<div class="center">
+  <div class="underline_overline">
+    <h1><b>$<%= monthly_payment %>/mo & <%= annual_payment %>/yr</b></h1>
+  </div>
+</div>
 
+<div class="center">
+  <%= link_to "Add Subscription", new_subscription_path, class: "btn btn-primary" %>
+</div>
+<br>
+
+<div class="row">
 <% @subscription.each do |s| %>
-  <li><%= link_to s.name, subscription_path(s) %> - $<%= s.fee %>/mo [Subscription created on <%= s.billing.strftime('%m-%d-%Y') %>]</li>
+    <div class="column">
+      <div class="card">
+        <div class ="container">
+          <h2><%= link_to s.name, subscription_path(s) %></h2>
+          <p><b>[<%= s.billing.strftime('%m-%d-%Y') %>]</b></p>
+          <h2>$<%= s.fee %>/mo</h2>
+        </div>
+      </div>
+   </div>
 <% end %>
+</div>

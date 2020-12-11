@@ -1,0 +1,15 @@
+<%= form_for([@subscription, @payment]) do |f| %>
+
+  <%= f.label "Billing" %>
+  <%= f.date_field :billing, value: Time.now.strftime('%Y-%m-%d'), class: "form-control" %>
+
+  <%= f.label "Payment Status" %>
+  <%= f.text_field :status, placeholder: 'Enter status...', class: "form-control" %>
+
+  <%= f.label "Credit card" %>
+  <%= f.select :credit_card_id, current_user.credit_cards.map { |cc| ["#{cc.company} - #{cc.digits}", cc.id] }, {}, class: "form-control" %>
+  <br>
+  <%= f.submit button_text, class: "btn btn-primary" %>
+
+
+<% end %>

@@ -1,5 +1,14 @@
-<h1>Welcome <%= @user.username %></h1>
+<div class="center">
 
-<%= form_tag("/logout", method: 'delete') do %>
-  <%= submit_tag "Logout" %>
-<% end %>
+  <h1>Welcome <%= @user.username %>!</h1>
+  <br>
+  <h3>You have <%= @user.subscriptions.count %> subscriptions!</h3>
+  <br>
+  <h3>You're paying $<%= monthly_payment %>/mo.</h3>
+  <br>
+  <h3>You've made <%= @user.payments.count %> payments!</h3>
+
+  <%= link_to "View Subscriptions", subscriptions_path, class: "btn btn-primary" %>
+
+</div>
+

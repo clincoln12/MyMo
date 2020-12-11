@@ -1,9 +1,13 @@
+<div class="center">
+
 <h1>Your Credit Cards</h1>
 
 <% @credit_card.each do |c| %>
-  <li><%= link_to c.company, credit_card_path(c) %> xxxx <%= c.digits %></li>
+  <h4><li><%= link_to c.company, credit_card_path(c) %> xxxx<%= c.digits %></li></h4>
 <% end %>
 
 <br>
 
-<%= link_to "Add Credit Card", new_credit_card_path %>
+<%= link_to "Add Credit Card", new_credit_card_path, class: "btn btn-primary" %>
+
+</div>

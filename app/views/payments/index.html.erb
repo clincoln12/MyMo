@@ -1,5 +1,11 @@
-<h1>Your <%= @subscription.name %> Payments</h1>
+<div class="center">
 
-<% @payments.each do |p| %>
-  <li><%= link_to p.billing.strftime('%m-%d-%Y'), subscription_payment_path(params[:subscription_id], p) %> - <%= p.status %></li>
-<% end %>
+  <h1>Your <%= @subscription.name %> Payments</h1>
+  <br>
+  <% @payments.each do |p| %>
+    <h4><li><%= link_to p.billing.strftime('%m-%d-%Y'), subscription_payment_path(params[:subscription_id], p) %> - <%= p.status %></li></h4>
+  <% end %>
+  <br>
+  <%= link_to "Add Payment", new_subscription_payment_path(@subscription), class: "btn btn-primary" %>
+
+</div>

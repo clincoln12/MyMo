@@ -1,6 +1,11 @@
-<h1><%= @payment.billing.strftime('%m-%d-%Y') %> - <%= @payment.status %></h1>
+<div class="center">
 
-<%= link_to "Edit", edit_subscription_payment_path(params[:subscription_id], @payment) %>
-<%= link_to "Delete", subscription_payment_path(params[:subscription_id], @payment), :confirm => "Are you sure?", :method => :delete %>
-<%= link_to "See other payments for subscription", subscription_payments_path(params[:subscription_id])%>
-<%= link_to 'Go back to subscription', subscription_path(params[:subscription_id])%>
+  <h1><%= @payment.billing.strftime('%m-%d-%Y') %> - <%= @payment.status %> - <%= @payment.credit_card.company %> <%= @payment.credit_card.digits %></h1>
+  <br>
+  <%= link_to "Edit", edit_subscription_payment_path(params[:subscription_id], @payment), class: "btn btn-default" %>
+  <%= link_to "Delete", subscription_payment_path(params[:subscription_id], @payment), class: "btn btn-default", data: {confirm: "Are you sure you want to delete?"}, :method => :delete %>
+  <%= link_to "Back To Payments", subscription_payments_path(params[:subscription_id]), class: "btn btn-default"%>
+  <br></br>
+  <%= link_to 'Back to Subscription', subscription_path(params[:subscription_id]), class: "btn btn-primary" %>
+
+</div>

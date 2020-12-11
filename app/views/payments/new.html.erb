@@ -1,16 +1,5 @@
-<h1>Add Payment</h1>
+<div class="center">
+  <h1>Add Payment</h1>
+</div>
 
-<%= form_for([@subscription, @payment]) do |f| %>
-
-  <%= f.label "Billing" %>
-  <%= f.date_field :billing, value: Time.now.strftime('%Y-%m-%d') %>
-
-  <%= f.label "Payment Status" %>
-  <%= f.text_field :status, placeholder: 'Enter status...' %>
-
-  <%= f.label "Credit card" %>
-  <%= f.select :credit_card_id, current_user.credit_cards.map { |cc| ["#{cc.company} - #{cc.digits}", cc.id] }  %>
-
-  <%= f.submit "Create" %>
-
-<% end %>
+<%= render partial: "form" %>
