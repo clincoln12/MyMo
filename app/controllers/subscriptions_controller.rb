@@ -24,9 +24,7 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscription = current_user.subscriptions.find_by(id: params[:id])
-    if @subscription == nil
-      redirect_to subscriptions_path
-    end
+    redirect_to subscriptions_path unless @subscription
   end
 
   def edit

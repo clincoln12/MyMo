@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_logged_in, :check_if_user_owns_payment
 
   def new
     @subscription = Subscription.find(params[:subscription_id])
@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
 
   def edit
     @subscription = Subscription.find(params[:subscription_id])
-    @payment = Payment.find(params[:id])
+    @payment = payment
   end
 
   def create
@@ -33,17 +33,17 @@ class PaymentsController < ApplicationController
   end
 
   def show
-    @payment = Payment.find_by(id: params[:id])
+    @payment = payment
   end
 
   def update
-    @payment = Payment.find(params[:id])
+    @payment = payment
     @payment.update(billing: params[:payment][:billing], status: params[:payment][:status])
     redirect_to payment_path(@payment)
   end
 
   def destroy
-    @payment = Payment.find(params[:id])
+    @payment = payment
     @payment.destroy
     redirect_to subscription_payments_path
   end
@@ -52,5 +52,13 @@ class PaymentsController < ApplicationController
 
   def payment_params
     params.require(:payment).permit(:billing, :status, :credit_card_id)
+  end
+
+  def payment
+    Payment.find(params[:id])
+  end
+
+  def check_if_user_owns_payment
+    redirect_to subscriptions_path unless payment.subscription.user == current_user
   end
 end
