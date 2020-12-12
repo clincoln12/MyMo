@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  get '/subscriptions/alphabetical' => 'subscriptions#alphabetical'
+  get '/subscriptions/price' => 'subscriptions#price'
+
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
   resources :subscriptions do

@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   #gives access to methods in the views
   helper_method :current_user, :logged_in?, :monthly_payment, :annual_payment
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+  rescue_from ActionController::RoutingError, :with => :rescue404
+
   private
 
   def current_user
@@ -24,5 +27,9 @@ class ApplicationController < ActionController::Base
 
   def annual_payment
     monthly_payment * 12
+  end
+
+  def rescue404
+    render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
   end
 end

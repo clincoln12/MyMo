@@ -48,6 +48,14 @@ class SubscriptionsController < ApplicationController
     redirect_to subscription_path
   end
 
+  def alphabetical
+    @subscription = current_user.subscriptions.alphabetical
+  end
+
+  def price
+    @subscription = current_user.subscriptions.price
+  end
+
   private
 
   def subscription_params
