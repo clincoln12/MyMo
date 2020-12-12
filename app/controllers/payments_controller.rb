@@ -59,6 +59,7 @@ class PaymentsController < ApplicationController
   end
 
   def check_if_user_owns_payment
-    redirect_to subscriptions_path unless payment.subscription.user == current_user
+    @subscription = Subscription.find(params[:subscription_id])
+    redirect_to subscriptions_path unless @subscription.user == current_user
   end
 end
