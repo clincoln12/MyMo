@@ -1,24 +1,34 @@
-# README
+# MyMo. [Subscription Tracking Application]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This was a Flatiron Rails Application project that was designed to track your monthly subscriptions.
 
-Things you may want to cover:
+## Objectives
+Build a Rails application that uses:
 
-* Ruby version
+  - ActiveRecord Associations
+  - ActiveRecord Scope Method(s)
+  - Nested Resources
+  - OAuth Signup/Login
+  - Authentications & Validations
 
-* System dependencies
+## Instructions
 
-* Configuration
+Clone this repo and run:
+```
+$ bundle install
+```
+Create a database.
+```
+$ rails db:migrate
+```
+You can run the server locally with the command below:
+```
+$ rails s
+```
+Open your browser and go to `localhost:3000`.
 
-* Database creation
+## Author
+- Chris Lincoln - https://github.com/clincoln12
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Contributing
+This project is open source under the MIT license, which means you have full access to the source code and can modify it to fit your own needs.
