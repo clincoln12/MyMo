@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       redirect_to @subscription
     else
+      flash.alert = @subscription.errors.full_messages[0]
       render :new
     end
   end
@@ -22,11 +23,17 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
-    @subscription = Subscription.find_by(id: params[:id])
+    @subscription = current_user.subscriptions.find_by(id: params[:id])
+    if @subscription == nil
+      redirect_to subscriptions_path
+    end
   end
 
   def edit
-    @subscription = Subscription.find(params[:id])
+    @subscription = current_user.subscriptions.find_by(id: params[:id])
+    if @subscription == nil
+      redirect_to subscriptions_path
+    end
   end
 
   def update
@@ -38,7 +45,7 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
-    redirect_to '/subscriptions'
+    redirect_to subscription_path
   end
 
   private

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
+      flash.alert = @user.errors.full_messages[0]
       render :new
     end
   end 
@@ -17,7 +18,11 @@ class UsersController < ApplicationController
   def show
     redirect_if_not_logged_in
     @user = User.find_by_id(params[:id])
-    redirect_to '/' if !@user
+    if @user == nil
+      redirect_to '/'
+    elsif current_user.id != @user.id
+      redirect_to '/'
+    end
   end
 
   private

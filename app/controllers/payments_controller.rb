@@ -22,6 +22,7 @@ class PaymentsController < ApplicationController
     if @payment.save
       redirect_to subscription_payment_path(params[:subscription_id], @payment)
     else
+      flash.alert = @payment.errors.full_messages[0]
       render :new
     end
   end

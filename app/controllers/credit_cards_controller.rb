@@ -13,6 +13,7 @@ class CreditCardsController < ApplicationController
     if @credit_card.save
       redirect_to @credit_card
     else
+      flash.alert = @credit_card.errors.full_messages[0]
       render :new
     end
   end
@@ -22,11 +23,17 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    @credit_card = CreditCard.find_by(id: params[:id])
+    @credit_card = current_user.credit_cards.find_by(id: params[:id])
+    if @credit_card == nil
+      redirect_to subscriptions_path
+    end
   end
 
   def edit
-    @credit_card = CreditCard.find(params[:id])
+    @credit_card = current_user.credit_cards.find_by(id: params[:id])
+    if @credit_card == nil
+      redirect_to subscriptions_path
+    end
   end
 
   def update

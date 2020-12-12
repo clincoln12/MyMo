@@ -14,5 +14,12 @@
   <%= f.password_field :password, class: "form-control" %>
   <br>
   <%= f.submit "Submit", class: "btn btn-primary" %>
+  <h3>OR</h3>
+  <div class="google-btn">
+    <div class="google-icon-wrapper">
+      <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+    </div>
+    <%= link_to "Signup with Google", '/auth/google_oauth2', class: "btn-text" %>
+  </div>
 
 <% end %>

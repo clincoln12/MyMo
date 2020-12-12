@@ -1,10 +1,10 @@
 <%= form_for(@subscription) do |f| %>
 
   <%= f.label "Service Name" %>
-  <%= f.text_field :name, class: "form-control" %>
+  <%= f.text_field :name, placeholder: "Service Name...", :required => true, class: "form-control" %>
 
   <%= f.label "Monthly Fee" %>
-  <%= f.number_field :fee, class: "form-control" %>
+  <%= f.number_field :fee, placeholder: "Monthly fee...", :required => true, class: "form-control" %>
 
   <%= f.label :billing %>
   <%= f.date_field :billing, value: Time.now.strftime('%Y-%m-%d'), class: "form-control" %>
