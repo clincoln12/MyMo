@@ -39,7 +39,7 @@ class PaymentsController < ApplicationController
   def update
     @payment = payment
     @payment.update(billing: params[:payment][:billing], status: params[:payment][:status])
-    redirect_to payment_path(@payment)
+    redirect_to subscription_payments_path
   end
 
   def destroy
