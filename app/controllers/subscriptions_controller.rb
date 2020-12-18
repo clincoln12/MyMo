@@ -19,7 +19,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def index
-    @subscription = current_user.subscriptions
+    if params[:search]
+      search_results = current_user.subscriptions.search(params[:search])
+      @subscription = search_results
+      flash.alert = 'No results found' if search_results.empty?
+    else
+      @subscription = current_user.subscriptions
+    end
   end
 
   def show

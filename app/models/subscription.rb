@@ -9,4 +9,8 @@ class Subscription < ApplicationRecord
   def self.price
     self.order(fee: :desc)
   end
+
+  def self.search(query)
+    self.where('name LIKE ?', "%#{query}%")
+  end
 end

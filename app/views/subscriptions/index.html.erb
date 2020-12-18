@@ -13,6 +13,11 @@
 </div>
 <br>
 
+<%= form_tag('/subscriptions', method: :get) do %>
+  <div><%= text_field_tag 'search', nil, placeholder: 'Enter search term...' %></div>
+  <div><%= submit_tag 'Search' %></div>
+<% end %>
+
 <%= link_to "Filter Alphabetically", subscriptions_alphabetical_path %>
 ,
 <%= link_to "Filter By Price", subscriptions_price_path %>
